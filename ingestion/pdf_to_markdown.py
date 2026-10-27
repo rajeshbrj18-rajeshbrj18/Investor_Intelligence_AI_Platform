@@ -43,5 +43,20 @@ class PDFToMarkdownConverter:
 
         return markdown_files
 
+if __name__ == "__main__":
+    repo_root = Path(__file__).resolve().parents[1]
+
+    input_dir = repo_root/"data"/"raw_pdfs"
+    output_dir = repo_root/"data"/"markdown"
+
+    converter = PDFToMarkdownConverter()
+
+    markdown_files = converter.convert_directory(str(input_dir), str(output_dir))
+
+    print(f"successfully converted {len(markdown_files)} PDFs")
+
+    for markdown_file in markdown_files:
+        print(f"  - {markdown_file}")
+
 
 
