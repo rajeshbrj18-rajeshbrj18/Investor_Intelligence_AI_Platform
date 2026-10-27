@@ -28,13 +28,17 @@ class PDFToMarkdownConverter:
 
 
     def convert_directory(self, input_dir: str, output_dir: str)-> list[str]:
+
         input_path = Path(input_dir)
+
         markdown_files = []
+
         for pdf_file in input_path.glob("*.pdf"):
             markdown_file = self.convert_to_pdf(
                 pdf_file, 
                 output_dir=output_dir
             )
+            
             markdown_files.append(markdown_file)
 
         return markdown_files
